@@ -1,29 +1,18 @@
 // @ts-check
 const { _electron: electron } = require('playwright');
 const path = require('path');
-
-const getAppPath = () => {
-	switch (process.platform) {
-		case 'darwin':
-//			return '/Applications/Visual Studio Code.app/Contents/MacOS/Electron';
-			return '/Applications/KensingtonWorks .app/Contents/MacOS/KensingtonWorks2';
-		case 'win32':
-			return path.join(__dirname, 'dist/win-unpacked/our-app.exe');
-		default:
-			throw new Error('Unsupported platfrom');
-	}
-};
+const {appInfo} = require('./electron/appInfo.js');
 
 (async () => {
 	try{
 		const electronApp = await electron.launch({
-			executablePath: getAppPath(),
+			executablePath: appInfo.appPath,
 				args:[
-						getAppPath(),
+						appInfo.appPath,
 						'--remote-debugging-port=9222'
 				]
 		});
-		console.log('(1/3) Launching ', getAppPath());	
+		console.log('(1/3) Launching ', appInfo.appPath);	
 		const window = await electronApp.firstWindow();
 		console.log('(2/3) Playwright.Inspector starting');
 		await window.pause();
