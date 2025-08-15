@@ -26,6 +26,5 @@ const electronTest = base.extend({
   }, { scope: 'test' }],
 });
 
-console.log('electronTest', electronTest);
 module.exports = { test: electronTest, expect };
 
