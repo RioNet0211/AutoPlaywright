@@ -18,6 +18,9 @@ const electronTest = base.extend({
   }, { scope: 'test' }],
 });
 
+<<<<<<< HEAD
+=======
 // Export the custom test object and expect assertion.
+>>>>>>> 72db10ef4a670110cd03fde176b386d6686f6428
 module.exports = { test: electronTest, expect };
 
