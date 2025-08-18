@@ -1,28 +1,20 @@
 const { test: base, expect, _electron: electron } = require('@playwright/test');
-const path = require('path');
-const {appInfo} = require('./appInfo.js');
-// Extend the base Playwright test to create our custom fixtures.
+
+console.log(`outside of ${!!global.__ELECTRON_APP__}`);
 const electronTest = base.extend({
   // This fixture will be responsible for launching the app.
   // It will run for each test that uses it.
-  electronApp: [async ({}, use) => {
-    // Path to your Electron app's executable
-    const appPath = appInfo.appPath;
-    
-    // Launch the app
-    const app = await electron.launch({ executablePath: appPath });
-    
+  electronApp: [async ({}, use) => {    
     // 'use' provides the launched app instance to the test.
-    await use(app);
-    
-    // After the test is done, this part will run for cleanup.
-    await app.close();
+    console.log(`base.extend::electronApp${_electronApp}`);
+    await use(_electronApp);    
   }, { scope: 'test' }],
 
   // This fixture depends on 'electronApp' and provides the main window as 'page'.
-  page: [async ({ electronApp }, use) => {
-    const appWindow = await electronApp.firstWindow();
-    await use(appWindow);
+  page: [async ({}, use) => {
+    console.log(`inside of base.extend, ${!!_appWindow}`);
+
+    await use(_appWindow);
   }, { scope: 'test' }],
 });
 

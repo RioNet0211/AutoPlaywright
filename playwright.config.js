@@ -33,15 +33,14 @@ export default defineConfig({
   expect: {
     timeout: 5*1000,
   },
-  /* Run tests in files in parallel */
-  fullyParallel: true,
-  /* Fail the build on CI if you accidentally left test.only in the source code. */
-  forbidOnly: !!process.env.CI,
+  /* global setup/teardwon for all test */
+  globalSetup: require.resolve('./playwright.global-setup.js'),
 
-  /* Retry on CI only */
-  retries: process.env.CI ? 2 : 0,
-  /* Opt out of parallel tests on CI. */
-  workers: process.env.CI ? 1 : undefined,
+  globalTeardown: require.resolve('./playwright.global-teardown.js'),
+
+  /* Run tests in files in parallel */
+  fullyParallel: false,
+  workers: 1,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
   reporter: 'html',
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
