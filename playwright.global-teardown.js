@@ -1,3 +1,4 @@
+
 module.exports = async () => {
     console.log('teardown: close application');
     if(global.__ELECTRON_APP__){
