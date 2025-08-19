@@ -6,12 +6,18 @@
   "directories": {
     "doc": "docs"
   },
-  "scripts": {},
+  "scripts": {
+    "test": "playwright test",
+    "test:dev": "NODE_ENV=development playwright test"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "@playwright/test": "^1.54.2",
     "@types/node": "^24.2.1"
+  },
+  "dependencies": {
+    "electron": "20.3.5"
   }
 }

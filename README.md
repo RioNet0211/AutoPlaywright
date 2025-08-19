@@ -35,3 +35,9 @@ npx playwright test tests/<your-test-case>
     the testcase name ***MUST*** end with `.test.js` 
 2. Directory
     placed in the ***tests*** directory
+
+### Run dev mode
+1. Place this project folder next to the Kensington Konnect project.
+2. In the Kensington Konnect project, run npm run start:watch.
+3. In the electron folder, create a file named appinfo.config.dev, and set the executablePath to KensingtonKonnect/gui.
+4. In this project, run npm run test:dev.

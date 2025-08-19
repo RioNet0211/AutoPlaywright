@@ -2,7 +2,7 @@ const fs = require('fs');
 const path = require('path');
 
 const getAppInfo = () => {
-    const fp = fs.readFileSync('./electron/appInfo.config', 'utf8');
+    const fp = fs.readFileSync(process.env.NODE_ENV === 'development' ? './electron/appInfo.config.dev' : './electron/appInfo.config', 'utf8');
     const _appInfo = JSON.parse(fp);
     switch (process.platform) {
         case 'darwin':
