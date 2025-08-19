@@ -15,6 +15,7 @@ test('[Profile1][Every Application] verify the function list from video conferen
   await expect(page.getByText('Share Content/ Stop Sharing')).toBeVisible();
   await expect(page.getByText('End Meeting')).toBeVisible();
   await expect(page.getByText('Screen Capture')).toBeVisible();
+  
   await expect(page.getByText('Answer Call')).toBeVisible();
   await expect(page.getByText('Decline Call')).toBeVisible();
 });

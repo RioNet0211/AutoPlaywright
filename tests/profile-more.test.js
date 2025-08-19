@@ -1,6 +1,7 @@
 const { test, expect } = require('../electron/testbase.js');
 
 test('[Profile][Every Application] basic profile options for new, rename, delete', async ({ page }) => {
+await page.waitForTimeout(2*1000);
   await page.getByRole('button').nth(1).click();
   await expect(page.getByRole('menu')).toContainText('Rename');
   await expect(page.getByRole('menu')).toContainText('Add a profile');
