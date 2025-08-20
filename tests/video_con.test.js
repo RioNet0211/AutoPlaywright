@@ -1,4 +1,5 @@
-const { test, expect } = require('../electron/testbase.js');
+const {test, expect, deviceInfo} = require('../electron/testbase.js');
+
 
 test('[Profile1][Every Application] verify the function list from video conference', async ({ page }) => {
   await page.getByRole('img').first().click();
@@ -7,7 +8,7 @@ test('[Profile1][Every Application] verify the function list from video conferen
   await expect(page.getByRole('button', { name: 'POINTER' })).toBeVisible();
   await expect(page.getByRole('button', { name: 'SCROLLING' })).toBeVisible();
   await page.locator('div').filter({ hasText: /^Expert Mouse™ TB800 EQ TrackballApplicationAll ApplicationsApplication$/ }).locator('button').click();
-  await page.getByText('Expert Mouse™ TB800 EQ').click();
+  await page.getByText(deviceInfo.name).click();
   await page.getByRole('button', { name: 'hover4' }).click();
   await page.getByRole('button', { name: 'Video Conferencing' }).click();
   await expect(page.getByText('Mute/ Unmute')).toBeVisible();

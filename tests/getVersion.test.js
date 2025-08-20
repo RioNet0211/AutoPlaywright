@@ -1,5 +1,5 @@
+const {test, expect, deviceInfo} = require('../electron/testbase.js');
 
-const { test, expect } = require('../electron/testbase.js');
 
 test('get version', async ({ page }) => {
   await page.getByLabel('Application Settings').locator('svg').click();
