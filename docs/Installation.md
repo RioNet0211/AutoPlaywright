@@ -1,7 +1,4 @@
 
-<<<<<<< HEAD
-# Playwright
-=======
 
 
 # AutoPlaywright
@@ -10,7 +7,6 @@ git clone <azure devops>
 
 npm install # if npm or nodeJS installed
 ```
->>>>>>> 72db10ef4a670110cd03fde176b386d6686f6428
 
 ## Electron-based 
 ### nvm & nodejs
