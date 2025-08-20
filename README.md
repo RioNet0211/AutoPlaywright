@@ -15,7 +15,14 @@ config the exec path in [codegen.js](./codegen/codegen.js)
 node gen-codeg.js
 ```
 
-## ReTest
+# Test Report 
+## Report from Regression Test
+```shell
+npx playwright show-report
+```
+
+
+## Regression Test
 ```shell
 # for all test-case
 npx playwright test
