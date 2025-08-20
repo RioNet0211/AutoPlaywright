@@ -1,6 +1,6 @@
 const { test, expect } = require('../electron/testbase');
 
-test('verify mouse buttons visible', async ({ page }) => {
+test('[Profile 1][Every Application] verify functions of mouse buttons visible', async ({ page }) => {
   await page.getByText('Expert Mouse™ TB800 EQ').click();
   await page.getByRole('button', { name: 'hover4' }).click();
   await expect(page.locator('#root')).toContainText('Left Drag');
