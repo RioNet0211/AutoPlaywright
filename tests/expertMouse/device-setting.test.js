@@ -1,9 +1,9 @@
-const {test, expect, deviceInfo} = require('../electron/testbase.js');
+const {test, expect} = require('../../electron/testbase.js');
 
 
 
 test('verify device setting info ', async ({ page }) => {
-  await page.getByText(deviceInfo.name).click();
+  await page.getByText("Expert Mouse™ TB800 EQ").click();
   await page.locator('div').filter({ hasText: /^Easy ModeAdvance ModeReset All$/ }).locator('svg').first().click();
   await expect.soft(page.locator('#root')).toContainText('SN:');
   await expect.soft(page.locator('div').filter({hasText: /^[0-9]{10}$/})).toHaveCount(1);

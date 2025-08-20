@@ -1,7 +1,7 @@
-const {test, expect, deviceInfo} = require('../electron/testbase.js');
+const {test, expect} = require('../../electron/testbase.js');
 
 test('[Profile1][Every Application] button default after reset-all', async ({ page }) => {
-  await page.getByText(deviceInfo.name).click();
+  await page.getByText("Expert Mouse™ TB800 EQ").click();
   await page.getByText('Reset All').click();
   await page.getByRole('button', { name: 'Okay' }).click();
   await expect.soft(page.getByLabel('hover64').locator('span')).toContainText('Play/Pause');

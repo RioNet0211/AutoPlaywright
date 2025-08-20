@@ -1,8 +1,8 @@
-const {test, expect, deviceInfo} = require('../electron/testbase.js');
+const {test, expect} = require('../../electron/testbase.js');
 
 
 test('[Profile][Every Application] verify horizonal speed set', async ({ page }) => {
-  await page.getByText(deviceInfo.name).click();
+  await page.getByText("Expert Mouse™ TB800 EQ").click();
   await page.getByRole('button', { name: 'SCROLLING' }).click();
   await page.getByRole('button', { name: 'hover262144' }).click();
   await page.getByText('Horizontal Scroll').nth(1).click();

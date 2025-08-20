@@ -1,8 +1,8 @@
-const {test, expect, deviceInfo} = require('../electron/testbase.js');
+const {test, expect} = require('../../electron/testbase.js');
 
 
 test('[Profile 1][Every Application] Scroll - verify all functionalities visible & correctness', async ({ page }) => {
-  await page.getByText(deviceInfo.name).click();
+  await page.getByText("Expert Mouse™ TB800 EQ").click();
   await page.getByRole('button', { name: 'SCROLLING' }).click();
   await page.getByRole('button', { name: 'hover262144' }).click();
   await expect.soft(page.getByRole('button', { name: 'Keyboard and Mouse' })).toBeVisible();

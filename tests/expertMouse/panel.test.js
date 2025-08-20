@@ -1,9 +1,9 @@
-const {test, expect, deviceInfo} = require('../electron/testbase.js');
+const {test, expect} = require('../../electron/testbase.js');
 
 
 // verify the setting panel 
 test('[Profile 1][Every Application] verify the setting panel', async ({ page }) => {
-  await page.getByText(deviceInfo.name).click();
+  await page.getByText("Expert Mouse™ TB800 EQ").click();
   await expect.soft(page.locator('#root')).toContainText('BUTTONS');
   await expect.soft(page.locator('#root')).toContainText('POINTER');
   await expect.soft(page.locator('#root')).toContainText('SCROLLING');

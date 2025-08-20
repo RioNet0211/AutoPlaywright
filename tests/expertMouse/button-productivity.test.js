@@ -1,7 +1,7 @@
-const {test, expect, deviceInfo} = require('../electron/testbase.js');
+const {test, expect} = require('../../electron/testbase.js');
 
 test('verify productivity buttons visible', async ({ page }) => {
-  await page.getByText(deviceInfo.name).click();
+  await page.getByText("Expert Mouse™ TB800 EQ").click();
   await page.getByRole('button', { name: 'hover8' }).click();
   await page.getByRole('button', { name: 'Productivity' }).click();
 

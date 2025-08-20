@@ -19,8 +19,22 @@ export default defineConfig({
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
   reporter: 'html',
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
-  use: {
-    trace: 'on-first-retry',
-  },
+  projects:[
+    {
+      name: "tb800",
+      testDir: "./tests/expertMouse",
+      use: {
+        trace: 'on-first-retry',
+      }
+    },
+    {
+      name:"orbit",
+      testDir: "./tests/orbit",
+      use: {
+        trace: 'on-first-retry',
+      },
+    }
+
+  ]
 });
 

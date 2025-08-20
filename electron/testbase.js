@@ -1,7 +1,7 @@
 const { test: base, expect, _electron: electron } = require("@playwright/test");
 const { appInfo } = require("./appInfo.js");
-const { deviceInfo } = require('./target-device.js');
 
+console.log(appInfo);
 const electronTest = base.extend({
   // This fixture will be responsible for launching the app.
   // It will run for each test that uses it.
@@ -41,4 +41,4 @@ const electronTest = base.extend({
   ],
 });
 
-module.exports = { test: electronTest, expect, deviceInfo};
+module.exports = {test: electronTest, expect};

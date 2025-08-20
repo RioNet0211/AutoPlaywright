@@ -6,7 +6,7 @@
 // https://kensington.formstack.com/forms/feedback
 
 
-const {test, expect, deviceInfo} = require('../electron/testbase.js');
+const {test, expect} = require('../../electron/testbase.js');
 
 
 test('software setting', async ({ page }) => {

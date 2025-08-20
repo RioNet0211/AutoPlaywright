@@ -1,8 +1,8 @@
-const {test, expect, deviceInfo} = require('../electron/testbase.js');
+const {test, expect} = require('../../electron/testbase.js');
 
 
 test('[Profile 1][Every Application] verify default setting on pointer', async ({ page }) => {
-  await page.getByText(deviceInfo.name).click();
+  await page.getByText("Expert Mouse™ TB800 EQ").click();
   await page.getByRole('button', { name: 'POINTER' }).click();
   await expect.soft(page.getByRole('button', { name: 'Pointer Speed' })).toBeVisible();
   await expect.soft(page.getByRole('button', { name: 'Sensitivity' })).toBeVisible();

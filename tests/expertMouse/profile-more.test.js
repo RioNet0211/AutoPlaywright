@@ -1,4 +1,4 @@
-const {test, expect, deviceInfo} = require('../electron/testbase.js');
+const {test, expect} = require('../../electron/testbase.js');
 
 
 test('[Profile][Every Application] basic profile options for new, rename, delete', async ({ page }) => {

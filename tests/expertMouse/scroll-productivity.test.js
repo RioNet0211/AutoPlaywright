@@ -1,8 +1,8 @@
-const {test, expect, deviceInfo} = require('../electron/testbase.js');
+const {test, expect} = require('../../electron/testbase.js');
 
 
 test('[Profile 1][Every Application] verify scroll productivity', async ({ page }) => {
-  await page.getByText(deviceInfo.name).click();
+  await page.getByText("Expert Mouse™ TB800 EQ").click();
   await page.getByRole('button', { name: 'SCROLLING' }).click();
   await page.getByText('Reset All').click();
   await page.getByRole('button', { name: 'Okay' }).click();
