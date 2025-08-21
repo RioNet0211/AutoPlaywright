@@ -27,6 +27,9 @@ npx playwright show-report
 # for all test-case
 npx playwright test
 
+# run for specific device
+npx playwright test --project=[expertMouse, orbit,...]
+
 # for specific test-case
 npx playwright test tests/<your-test-case>
 ```
