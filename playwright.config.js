@@ -21,7 +21,7 @@ export default defineConfig({
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   projects:[
     {
-      name: "tb800",
+      name: "expertMouse",
       testDir: "./tests/expertMouse",
       use: {
         trace: 'on-first-retry',
