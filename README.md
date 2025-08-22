@@ -9,10 +9,32 @@
 ## Installation
 [Installation Guide](./docs/Installation.md)
 
-## Codegen
-config the exec path in [codegen.js](./codegen/codegen.js)
+## Config
+### Mac
 ```shell
-node gen-codeg.js
+# copy from the result
+ls -al /Applications/<your_application>/Contents/MacOS/
+# ex: /Applications/Visual Studio Code/Contents/MacOS/Electron
+```
+
+### Windows
+```powershell
+# copy from execution
+ls "C:\Program Files\<your_application>\<execution>.exe"
+```
+
+## Codegen
+play on both of <your_application> and `Playwright Inspector`
+Tester just need to do something like an user, the inspector records your operation for regression test
+
+
+```shell
+node gen-code.js
+```
+### Alias Command
+```shell
+# alias on playwright.config.js
+npm run codegen
 ```
 
 # Test Report 
@@ -20,7 +42,11 @@ node gen-codeg.js
 ```shell
 npx playwright show-report
 ```
-
+### Alias
+```shell
+# alias on playwright.config.js
+npm run report
+```
 
 ## Regression Test
 ```shell
