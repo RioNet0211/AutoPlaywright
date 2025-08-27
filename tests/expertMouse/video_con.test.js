@@ -3,7 +3,7 @@ const {test, expect} = require('../../electron/testbase.js');
 
 test('[Profile1][Every Application] verify the function list from video conference', async ({ page }) => {
   const _slowMo = 150;
-  await page.getByRole('img').first().click();
+  await page.getByText("Expert Mouse™ TB800 EQ").click();
   await expect(page.locator('#root')).toContainText('Expert Mouse™ TB800 EQ Trackball');
   await expect(page.getByRole('button', { name: 'BUTTONS' })).toBeVisible();
   await expect(page.getByRole('button', { name: 'POINTER' })).toBeVisible();

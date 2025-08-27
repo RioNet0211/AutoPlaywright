@@ -1,7 +1,3 @@
-
-
-
-
 // https://www.kensington.com/resources/support/
 // https://kensington.formstack.com/forms/feedback
 
@@ -12,8 +8,8 @@ const path = require('path');
 
 
 test('backup/restore from local', async ({ page, electronApp }) => {
-  const back_dir = path.resolve(path.join(__filename, '..', '..', '.backup'));
-  const backup_path = path.resolve(path.join(back_dir, 'auto_test.db'));
+  const back_dir = path.resolve(path.join(__filename, '..', '..', '..', 'backup'));
+  const backup_path = path.resolve(path.join(back_dir, '.auto_test.db'));
   // Ensure the download directory exists.
   if (!fs.existsSync(back_dir)) {
     fs.mkdirSync(back_dir, { recursive: true });
