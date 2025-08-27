@@ -31,7 +31,7 @@ test('[Profile][Every Application] basic profile options for new, rename, delete
     }, restore_path);
     await page.getByRole('button', {name: 'Restore', exact:true}).click();
     await expect.soft(page.getByText('Success')).toBeVisible();
-    await page.getByRole('button').filter({ hasText: /^$/ }).click();
+    await page.getByRole('button').filter({ hasText: /^$/ }).last().click();
   }
   await page.waitForTimeout(1*1000);
   
