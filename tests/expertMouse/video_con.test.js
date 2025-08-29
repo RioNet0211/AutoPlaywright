@@ -1,7 +1,10 @@
 const {test, expect} = require('../../electron/testbase.js');
+const path = require('path');
 
+test('[Profile1][Every Application] verify the function list from video conference', async ({ page, electronApp }) => {
+  const context = await electronApp.context();
+  await context.tracing.start({ screenshots: true, snapshots: true });
 
-test('[Profile1][Every Application] verify the function list from video conference', async ({ page }) => {
   const _slowMo = 150;
   await page.getByText("Expert Mouse™ TB800 EQ").click();
   await expect(page.locator('#root')).toContainText('Expert Mouse™ TB800 EQ Trackball');
@@ -26,4 +29,5 @@ test('[Profile1][Every Application] verify the function list from video conferen
   await page.waitForTimeout(_slowMo); await page.getByRole('radio', {name: 'Answer Call'}).check();
   await expect(page.getByText('Decline Call')).toBeVisible();
   await page.waitForTimeout(_slowMo); await page.getByRole('radio', {name: 'Decline Call'}).check();
+  await context.tracing.stop({path: `test-results//trace/${path.basename(__filename)}.zip`});
 });

@@ -1,7 +1,10 @@
 const {test, expect} = require('../../electron/testbase.js');
+const path = require('path');
 
+test('[Profile 1][Every Application] Scroll - verify all functionalities visible & correctness', async ({ page, electronApp }) => {
+  const context = await electronApp.context();
+  await context.tracing.start({ screenshots: true, snapshots: true });
 
-test('[Profile 1][Every Application] Scroll - verify all functionalities visible & correctness', async ({ page }) => {
   await page.getByText("Expert Mouse™ TB800 EQ").click();
   await page.getByRole('button', { name: 'SCROLLING' }).click();
   await page.getByRole('button', { name: 'hover262144' }).click();
@@ -22,4 +25,6 @@ test('[Profile 1][Every Application] Scroll - verify all functionalities visible
   await expect.soft(page.locator('#root')).toContainText('Navigation Between Tabs');
   await expect.soft(page.locator('#root')).toContainText('Navigation Between Apps');
   await expect.soft(page.locator('#root')).toContainText('Switch Between Desktops');
+
+  await context.tracing.stop({path: `test-results//trace/${path.basename(__filename)}.zip`});
 });

@@ -92,6 +92,16 @@ npx playwright show-report
 # alias on playwright.config.js
 npm run report
 ```
+## Trace
+`test-results/trace/<your filename>.zip` is the trace.zip of your testcase
+```shell
+npx playwright show-trace test-results/trace/<your filename>.zip
+```
+you will open it
+
+[trace code](./docs/trace.md)
+
+
 ## Regression Test
 ```shell
 # for all test-case under tests

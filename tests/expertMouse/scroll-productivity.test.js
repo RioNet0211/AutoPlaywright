@@ -1,7 +1,10 @@
 const {test, expect} = require('../../electron/testbase.js');
+const path = require('path');
 
+test('[Profile 1][Every Application] verify scroll productivity', async ({ page, electronApp }) => {
+  const context = await electronApp.context();
+  await context.tracing.start({ screenshots: true, snapshots: true });
 
-test('[Profile 1][Every Application] verify scroll productivity', async ({ page }) => {
   await page.getByText("Expert Mouse™ TB800 EQ").click();
   await page.getByRole('button', { name: 'SCROLLING' }).click();
   await page.getByText('Reset All').click();
@@ -35,4 +38,6 @@ test('[Profile 1][Every Application] verify scroll productivity', async ({ page 
   await page.mouse.wheel(0, 10);
 
   await page.getByRole('button', { name: 'Reset' }).click();
+
+  await context.tracing.stop({path: `test-results//trace/${path.basename(__filename)}.zip`});
 });

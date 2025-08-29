@@ -1,8 +1,12 @@
 const {test, expect} = require('../../electron/testbase.js');
 const {testId} = require('./_base-buttonTestIds.js');
+const path = require('path');
 
 
-test('verify productivity buttons visible', async ({ page }) => {
+test('verify productivity buttons visible', async ({ page, electronApp }) => {
+  const context = await electronApp.context();
+  await context.tracing.start({ screenshots: true, snapshots: true });
+
   await page.getByText("Expert Mouse™ TB800 EQ").click();
 
   for (const _testId of testId.button) {
@@ -117,4 +121,5 @@ test('verify productivity buttons visible', async ({ page }) => {
 
     await page.getByRole('button', {name:'Reset'}).click();
   }
+  await context.tracing.stop({path: `test-results//trace/${path.basename(__filename)}.zip`});
 });

@@ -1,7 +1,11 @@
 const {test, expect} = require('../../electron/testbase.js');
 const {testId} = require('./_base-buttonTestIds.js');
+const path = require('path');
 
-test('[Profile 1][Every Application] verify functions of mouse buttons visible', async ({ page }) => {
+test('[Profile 1][Every Application] verify functions of mouse buttons visible', async ({ page, electronApp }) => {
+  const context = await electronApp.context();
+  await context.tracing.start({ screenshots: true, snapshots: true });
+
   await page.getByText("Expert Mouse™ TB800 EQ").click();
   await page.getByText("Advance Mode").click();
 
@@ -23,4 +27,5 @@ test('[Profile 1][Every Application] verify functions of mouse buttons visible',
     await expect(page.locator('#root')).toContainText('Hold to Apply');
     
   }
+  await context.tracing.stop({path: `test-results//trace/${path.basename(__filename)}.zip`});
 });

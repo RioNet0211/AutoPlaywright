@@ -1,7 +1,10 @@
 const {test, expect} = require('../../electron/testbase.js');
+const path = require('path');
 
+test('[Profile][Every Application] verify horizonal speed set', async ({ page, electronApp }) => {
+  const context = await electronApp.context();
+  await context.tracing.start({ screenshots: true, snapshots: true });
 
-test('[Profile][Every Application] verify horizonal speed set', async ({ page }) => {
   await page.getByText("Expert Mouse™ TB800 EQ").click();
   await page.getByRole('button', { name: 'SCROLLING' }).click();
   await page.getByRole('button', { name: 'hover262144' }).click();
@@ -13,4 +16,6 @@ test('[Profile][Every Application] verify horizonal speed set', async ({ page })
   await expect.soft(page.locator('#root')).toMatchAriaSnapshot(`- slider: "3"`);
   await expect.soft(page.locator('#root')).toContainText('Scrolling Speed: 3');
   await page.getByRole('button', { name: 'Reset' }).click();
+
+  await context.tracing.stop({path: `test-results//trace/${path.basename(__filename)}.zip`});
 });

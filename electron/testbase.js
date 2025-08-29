@@ -24,10 +24,10 @@ const electronTest = base.extend({
           executablePath:appInfo.executablePath
         });
       }
-      const context = await electronApp.context();
-      await context.tracing.start({ screenshots: true, snapshots: true });
+      // const context = await electronApp.context();
+      // await context.tracing.start({ screenshots: true, snapshots: true });
       await use(electronApp);
-      await context.tracing.stop({path: 'test-results/trace.zip'});
+      // await context.tracing.stop({path: 'test-results/trace.zip'});
       await electronApp.close();
     },
     { scope: "test" },

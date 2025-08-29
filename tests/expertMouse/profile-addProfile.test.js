@@ -37,7 +37,8 @@ test.beforeAll( async ({page, electronApp}) => {
 });
 
 test('[Profile][Every Application] basic profile options for adding', async ({ page, electronApp }) => {
-  
+  const context = await electronApp.context();
+  await context.tracing.start({ screenshots: true, snapshots: true });
   await page.waitForTimeout(1*1000);
 
   await page.getByRole('button').nth(1).click();
@@ -45,5 +46,5 @@ test('[Profile][Every Application] basic profile options for adding', async ({ p
   await page.getByText('Add a profile').click();
   await expect.soft(page.getByRole('textbox')).toHaveValue('Profile2');
   await page.getByText('My Gear').click() // reset the count of Role('button')
-  
+  context.tracing.stop({path: `test-results//trace/${path.basename(__filename)}.zip`});
 });

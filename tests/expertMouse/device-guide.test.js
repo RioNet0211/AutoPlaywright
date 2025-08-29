@@ -1,8 +1,11 @@
 const {test, expect} = require('../../electron/testbase.js');
+const path = require('path');
 
 
+test('verify device setting guide ', async ({ page, electronApp }) => {
+  const context = await electronApp.context();
+  await context.tracing.start({ screenshots: true, snapshots: true });
 
-test('verify device setting guide ', async ({ page }) => {
   await page.getByText("Expert Mouse™ TB800 EQ").click();
   await page.locator('div').filter({ hasText: /^Easy ModeAdvance ModeReset All$/ }).locator('svg').first().click();
   await page.getByRole('button', { name: 'Launch' }).click();
@@ -24,4 +27,6 @@ test('verify device setting guide ', async ({ page }) => {
   await page.getByRole('button', { name: 'Launch' }).click();
   await page.getByText('Skip guide').click();
   await expect.soft(page.getByText('Skip guide')).toHaveCount(0);
+
+  await context.tracing.stop({path: `test-results//trace/${path.basename(__filename)}.zip`});
 });

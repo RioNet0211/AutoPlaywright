@@ -2,8 +2,8 @@ const {test, expect} = require('../../electron/testbase.js');
 const fs = require('fs');
 const path = require('path');
 
-
-test('[Profile][Every Application] basic profile options for duplicate', async ({ page, electronApp }) => {
+test.beforeAll( async ({page, electronApp}) => {
+  // Perform any setup needed before all tests
   const restore_dir = path.resolve(path.join(__filename, '..', '..', '..', 'backup'));
   const restore_path = path.resolve(path.join(restore_dir, 'profile1.db'));
   // Ensure the download directory exists.
@@ -33,6 +33,12 @@ test('[Profile][Every Application] basic profile options for duplicate', async (
     await expect.soft(page.getByText('Success')).toBeVisible();
     await page.getByRole('button').filter({ hasText: /^$/ }).last().click();
   }
+});
+
+test('[Profile][Every Application] basic profile options for duplicate', async ({ page, electronApp }) => {
+  const context = await electronApp.context();
+  await context.tracing.start({ screenshots: true, snapshots: true });
+
   await page.waitForTimeout(1*1000);
 
   await page.getByRole('button').nth(1).click();
@@ -66,4 +72,5 @@ test('[Profile][Every Application] basic profile options for duplicate', async (
   // await page.getByRole('button', { name: 'Reset' }).click();
     
   // await page.locator('.MuiBackdrop-root').click();
+  await context.tracing.stop({path: `test-results//trace/${path.basename(__filename)}.zip`});
 });

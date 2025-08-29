@@ -7,9 +7,12 @@
 
 
 const {test, expect} = require('../../electron/testbase.js');
+const path = require('path');
 
+test('software setting', async ({ page, electronApp }) => {
+  const context = await electronApp.context();
+  await context.tracing.start({ screenshots: true, snapshots: true });
 
-test('software setting', async ({ page }) => {
   await page.getByLabel('Application Settings').locator('svg').click();
   
   await page.getByText('ENGLISH').click();
@@ -101,4 +104,5 @@ test('software setting', async ({ page }) => {
 //   await page.getByRole('checkbox', { name: 'Debug mode' }).check();
 //   await page.getByRole('checkbox', { name: 'Debug mode' }).uncheck();
 //   await page.getByRole('button', { name: 'Export log file' }).click();
+  await context.tracing.stop({path: `test-results//trace/${path.basename(__filename)}.zip`});
 });

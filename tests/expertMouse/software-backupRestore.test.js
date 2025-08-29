@@ -8,6 +8,9 @@ const path = require('path');
 
 
 test('backup/restore from local', async ({ page, electronApp }) => {
+  const context = await electronApp.context();
+  await context.tracing.start({ screenshots: true, snapshots: true });
+
   const back_dir = path.resolve(path.join(__filename, '..', '..', '..', 'backup'));
   const backup_path = path.resolve(path.join(back_dir, '.auto_test.db'));
   // Ensure the download directory exists.
@@ -56,5 +59,6 @@ test('backup/restore from local', async ({ page, electronApp }) => {
   }, backup_path);
   await page.getByRole('button', {name: 'Restore', exact:true}).click();
   await expect.soft(page.getByText('Success')).toBeVisible();
-  // await expect(page.locator('text=Restore Succeeded')).toBeVisible();
+
+  await context.tracing.stop({path: `test-results//trace/${path.basename(__filename)}.zip`});
 });
