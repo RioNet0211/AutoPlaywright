@@ -3,7 +3,7 @@ const fs = require('fs');
 const path = require('path');
 
 
-test('[Profile][Every Application] basic profile options for new, rename, delete', async ({ page, electronApp }) => {
+test('[Profile][Every Application] basic profile options for rename', async ({ page, electronApp }) => {
   const restore_dir = path.resolve(path.join(__filename, '..', '..', '..', 'backup'));
   const restore_path = path.resolve(path.join(restore_dir, 'profile1.db'));
   // Ensure the download directory exists.

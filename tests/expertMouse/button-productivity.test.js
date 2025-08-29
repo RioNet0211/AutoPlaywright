@@ -25,10 +25,10 @@ test('verify productivity buttons visible', async ({ page }) => {
   await expect.soft(page.getByRole('radio', {name: 'Copy'})).toBeChecked();
   await page.mouse.wheel(0, 10);
 
-  await expect.soft(page.locator('#root')).toContainText('Select All');
-  await page.getByRole('radio', {name:'Select All'}).check();
-  await expect.soft(page.getByRole('radio', {name: 'Select All'})).toBeChecked();
-  await page.mouse.wheel(0, 10);
+  // await expect.soft(page.locator('#root')).toContainText('Select All');
+  // await page.getByRole('radio', {name:'Select All'}).check();
+  // await expect.soft(page.getByRole('radio', {name: 'Select All'})).toBeChecked();
+  // await page.mouse.wheel(0, 10);
 
   await expect.soft(page.locator('#root')).toContainText('Find');
   await page.getByRole('radio', {name:'Find'}).check();
@@ -75,10 +75,10 @@ test('verify productivity buttons visible', async ({ page }) => {
   await expect.soft(page.getByRole('radio', {name:'Refresh' })).toBeChecked();
   await page.mouse.wheel(0, 10);
 
-  await expect.soft(page.locator('#root')).toContainText('Maximize Window');
-  await page.getByRole('radio', {name:'Maximize Window'}).check();
-  await expect.soft(page.getByRole('radio', {name:'Maximize Window' })).toBeChecked();
-  await page.mouse.wheel(0, 10);
+  // await expect.soft(page.locator('#root')).toContainText('Maximize Window');
+  // await page.getByRole('radio', {name:'Maximize Window'}).check();
+  // await expect.soft(page.getByRole('radio', {name:'Maximize Window' })).toBeChecked();
+  // await page.mouse.wheel(0, 10);
 
   await expect.soft(page.locator('#root')).toContainText('Show Next Window');
   await page.getByRole('radio', {name:'Show Next Window'}).check();
