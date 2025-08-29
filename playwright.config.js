@@ -13,6 +13,10 @@ export default defineConfig({
   expect: {
     timeout: 5*1000,
   },
+  retries: 1,
+  use: {
+    trace: 'retain-on-failure',
+  },
   /* Run tests in files in parallel */
   fullyParallel: false,
   workers: 1,
@@ -24,14 +28,14 @@ export default defineConfig({
       name: "expertMouse",
       testDir: "./tests/expertMouse",
       use: {
-        trace: 'on-first-retry',
+        trace: 'retain-on-failure',
       }
     },
     {
       name:"orbit",
       testDir: "./tests/orbit",
       use: {
-        trace: 'on-first-retry',
+        trace: 'retain-on-failure',
       },
     }
 

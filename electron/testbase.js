@@ -27,7 +27,7 @@ const electronTest = base.extend({
       const context = await electronApp.context();
       await context.tracing.start({ screenshots: true, snapshots: true });
       await use(electronApp);
-      await context.tracing.stop({ path: "trace.zip" });
+      await context.tracing.stop({path: 'test-results/trace.zip'});
       await electronApp.close();
     },
     { scope: "test" },
