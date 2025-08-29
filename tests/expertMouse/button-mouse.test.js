@@ -1,24 +1,12 @@
 const {test, expect} = require('../../electron/testbase.js');
+const {testId} = require('./_base-buttonTestIds.js');
 
 test('[Profile 1][Every Application] verify functions of mouse buttons visible', async ({ page }) => {
   await page.getByText("Expert Mouse™ TB800 EQ").click();
   await page.getByText("Advance Mode").click();
-  const buttonTestIds = [
-    'trackball-8168-config-button-2-enabled',
-    'trackball-8168-config-button-5-enabled',
-    'trackball-8168-config-button-10-enabled',
-    'trackball-8168-config-button-12-enabled',
-    'trackball-8168-config-button-3-enabled',
-    'trackball-8168-config-button-4-enabled',
-    'trackball-8168-config-button-32-enabled',
-    'trackball-8168-config-button-64-enabled',
-    'trackball-8168-config-button-128-enabled',
-    'trackball-8168-config-button-256-enabled',
-    'trackball-8168-config-button-8-enabled'
-  ];
 
-  for (const testId of buttonTestIds) {
-    await page.getByTestId(testId).click();
+  for (const _testId of testId.button) {
+    await page.getByTestId(_testId).click();
     await page.getByRole('button', {name:'Keyboard and Mouse'}).click();
     await expect(page.locator('#root')).toContainText('Left Drag');
     await expect(page.locator('#root')).toContainText('Right Drag');

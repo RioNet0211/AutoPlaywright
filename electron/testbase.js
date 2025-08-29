@@ -24,9 +24,10 @@ const electronTest = base.extend({
           executablePath:appInfo.executablePath
         });
       }
-
+      const context = await electronApp.context();
+      await context.tracing.start({ screenshots: true, snapshots: true });
       await use(electronApp);
-
+      await context.tracing.stop({ path: "trace.zip" });
       await electronApp.close();
     },
     { scope: "test" },
@@ -37,6 +38,7 @@ const electronTest = base.extend({
     async ({ electronApp }, use) => {
       const page = await electronApp.firstWindow();
       await use(page);
+      
     },
     { scope: "test" },
   ],
