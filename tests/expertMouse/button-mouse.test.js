@@ -1,5 +1,5 @@
 const {test, expect} = require('../../electron/testbase.js');
-const {testId} = require('./_base-buttonTestIds.js');
+const {elements: elements} = require('./_base-buttonTestIds.js');
 const path = require('path');
 
 test('[Profile 1][Every Application] verify functions of mouse buttons visible', async ({ page, electronApp }) => {
@@ -9,8 +9,9 @@ test('[Profile 1][Every Application] verify functions of mouse buttons visible',
   await page.getByText("Expert Mouse™ TB800 EQ").click();
   await page.getByText("Advance Mode").click();
 
-  for (const _testId of testId.button) {
-    await page.getByTestId(_testId).click();
+  for (const _button of elements.button) {
+    // await page.getByTestId(_testId).click();
+    await page.getByRole('button', {name: _button.name, exact:true}).click();
     await page.getByRole('button', {name:'Keyboard and Mouse'}).click();
     await expect(page.locator('#root')).toContainText('Left Drag');
     await expect(page.locator('#root')).toContainText('Right Drag');

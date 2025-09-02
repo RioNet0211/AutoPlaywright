@@ -1,5 +1,5 @@
 const {test, expect} = require('../../electron/testbase.js');
-const {testId} = require('./_base-buttonTestIds.js');
+const {elements: elements} = require('./_base-buttonTestIds.js');
 const path = require('path');
 
 
@@ -9,9 +9,9 @@ test('verify productivity buttons visible', async ({ page, electronApp }) => {
 
   await page.getByText("Expert Mouse™ TB800 EQ").click();
 
-  for (const _testId of testId.button) {
-    // await page.getByRole('button', { name: 'hover8' }).click();
-    await page.getByTestId(_testId).click();
+  for (const _button of elements.button) {
+    await page.getByRole('button', { name: _button.name , exact:true}).click();
+    // await page.getByTestId(_button.testId).click();
     await page.getByRole('button', { name: 'Productivity' }).click();
 
     await expect.soft(page.locator('#root')).toContainText('Undo');
