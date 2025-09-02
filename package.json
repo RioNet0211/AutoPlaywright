@@ -9,8 +9,8 @@
   "scripts": {
     "codegen": "node gen-code.js",
     "report": "playwright show-report",
-    "test": "cross-env NODE_ENV=development playwright test --ui",
-    "test:dev": "cross-env NODE_ENV=development playwright test"
+    "test": "playwright test --ui",
+    "test:dev": "cross-env NODE_ENV=development playwright test --ui"
   },
   "keywords": [],
   "author": "",
