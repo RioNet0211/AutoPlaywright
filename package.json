@@ -7,9 +7,9 @@
     "doc": "docs"
   },
   "scripts": {
-    "codegen":"node gen-code.js",
-    "report":"playwright show-report",
-    "test": "playwright test",
+    "codegen": "node gen-code.js",
+    "report": "playwright show-report",
+    "test": "playwright test --ui",
     "test:dev": "NODE_ENV=development playwright test"
   },
   "keywords": [],
@@ -20,6 +20,6 @@
     "@types/node": "^24.2.1"
   },
   "dependencies": {
-    "electron": "20.3.5"
+    "electron": "^37.4.0"
   }
 }

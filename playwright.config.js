@@ -8,12 +8,12 @@ const {appInfo} = require('./electron/appInfo.js');
  */
 export default defineConfig({
   testDir: './tests',
-  timeout: 30 * 1000, // timeout 30 sec
+  timeout: 45_000, // timeout 45 sec
   globalTimeout: 60*60*1000, // timeout 1 hr
   expect: {
     timeout: 5*1000,
   },
-  retries: 1,
+  retries: 0,
   use: {
     trace: 'retain-on-failure',
   },
